@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Memaksa Laravel mengenali folder public di environment Vercel
+        $this->app->bind('path.public', function () {
+            return base_path('public');
+        });
     }
 }
