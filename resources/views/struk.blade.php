@@ -19,10 +19,10 @@
 </head>
 <body class="bg-zinc-100 flex justify-center py-10 px-4">
 
-    <div class="bg-white text-black w-full max-w-md p-8 shadow-2xl rounded-sm border-t-8 border-red-600">
+    <div class="bg-white text-black w-full max-w-md p-8 shadow-2xl rounded-sm border-t-8 border-orange-600">
         
         <div class="text-center mb-8">
-            <h1 class="text-2xl font-black italic uppercase tracking-tighter">Auto <span class="text-red-600">Engine</span></h1>
+            <h1 class="text-2xl font-black italic uppercase tracking-tighter">Auto <span class="text-orange-600">Engine</span></h1>
             <p class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest leading-tight mt-1">
                 Car Service & Spareparts<br>
                 Tangerang, Indonesia
@@ -62,7 +62,7 @@
             <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-4 italic">*** Terima Kasih & Salam Gacor ***</p>
             
             <div class="no-print flex space-x-2">
-                <button onclick="window.print()" class="flex-1 bg-red-600 text-white font-black py-3 rounded-xl uppercase text-[10px] tracking-widest shadow-lg shadow-red-200">
+                <button onclick="window.print()" class="flex-1 bg-orange-600 text-white font-black py-3 rounded-xl uppercase text-[10px] tracking-widest shadow-lg shadow-orange-200">
                     <i class="fas fa-print mr-2"></i> Cetak Struk
                 </button>
                 <a href="/" class="flex-1 bg-zinc-900 text-white font-black py-3 rounded-xl uppercase text-[10px] tracking-widest text-center">

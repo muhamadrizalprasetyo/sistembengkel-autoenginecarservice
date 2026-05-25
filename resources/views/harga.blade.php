@@ -8,12 +8,12 @@
 </head>
 <body class="bg-zinc-950 text-white p-10 font-sans">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl font-bold text-red-600 mb-2 italic uppercase">Daftar Harga & Jasa</h1>
-        <div class="h-1 w-20 bg-red-600 mb-8"></div>
+        <h1 class="text-4xl font-bold text-orange-600 mb-2 italic uppercase">Daftar Harga & Jasa</h1>
+        <div class="h-1 w-20 bg-orange-600 mb-8"></div>
 
         <div class="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden shadow-2xl">
             <table class="w-full text-left">
-                <thead class="bg-black text-red-600 uppercase text-sm border-b border-zinc-800">
+                <thead class="bg-black text-orange-600 uppercase text-sm border-b border-zinc-800">
                     <tr>
                         <th class="p-4">Nama Item</th>
                         <th class="p-4">Kategori</th>
@@ -35,7 +35,7 @@
         </div>
         
         <div class="mt-8">
-            <a href="/" class="text-zinc-400 hover:text-red-500 transition">&larr; Kembali ke Landing Page</a>
+            <a href="/" class="text-zinc-400 hover:text-orange-500 transition">&larr; Kembali ke Landing Page</a>
         </div>
     </div>
 </body>

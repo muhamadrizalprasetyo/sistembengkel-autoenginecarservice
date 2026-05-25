@@ -1,281 +1,220 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#09090b">
     <title>Booking Berhasil! | Auto Engine</title>
-    <meta name="robots" content="noindex">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        :root { --orange: #ff5e00; --purple: #bf00ff; --bg: #050505; }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg);
+            background-color: #09090b;
             color: #e4e4e7;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
-        .anton { font-family: 'Anton', sans-serif; }
-        .neon-o { color: var(--orange); text-shadow: 0 0 18px rgba(255,94,0,.7); }
+
+        .neon-glow {
+            text-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+        }
+
         .glass {
-            background: rgba(10,10,12,0.78);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
 
-        /* ===[ ANIMATIONS — transform/opacity only ]=== */
-        @keyframes check-pop {
-            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
-            70% { transform: scale(1.1) rotate(3deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
-        @keyframes fade-up {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes orb-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-16px); }
-        }
-        .anim-check { animation: check-pop 0.65s cubic-bezier(.175,.885,.32,1.275) 0.2s both; }
-        .anim-up-1 { animation: fade-up 0.5s ease 0.4s both; }
-        .anim-up-2 { animation: fade-up 0.5s ease 0.6s both; }
-        .anim-up-3 { animation: fade-up 0.5s ease 0.8s both; }
-        .orb-float { animation: orb-float 5s ease-in-out infinite; }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-        /* Buttons */
-        .btn-primary {
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-            min-height: 52px; width: 100%; padding: 0 1.5rem;
-            background: var(--orange); color: #fff;
-            font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem;
-            border-radius: 0.875rem;
-            box-shadow: 0 0 20px rgba(255,94,0,.25);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            will-change: transform;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        @media (hover: hover) { .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(255,94,0,.4); } }
-        .btn-primary:active { transform: scale(0.97); }
 
-        .btn-ghost {
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-            min-height: 52px; width: 100%; padding: 0 1.5rem;
-            background: transparent; color: #fff;
-            border: 1.5px solid rgba(255,255,255,.15);
-            font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.875rem;
-            border-radius: 0.875rem;
-            transition: transform 0.2s ease, background 0.2s ease;
-            will-change: transform;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        @media (hover: hover) { .btn-ghost:hover { background: rgba(255,255,255,.06); transform: translateY(-2px); } }
-        .btn-ghost:active { transform: scale(0.97); }
 
-        /* Form inputs — 16px prevents iOS auto-zoom */
-        .form-input {
-            width: 100%; min-height: 52px; padding: 0 1rem;
-            font-size: 16px; font-family: inherit;
-            background: rgba(0,0,0,.5); color: #fff;
-            border: 1px solid #3f3f46; border-radius: 0.75rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            -webkit-appearance: none; appearance: none;
+        .check-anim {
+            animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--orange);
-            box-shadow: 0 0 0 1px var(--orange), 0 0 12px rgba(255,94,0,.2);
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-        textarea.form-input { min-height: 110px; padding: 0.875rem 1rem; resize: vertical; }
+
+        /* Industrial Grid Pattern */
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
 
-    {{-- Background orbs --}}
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
-        <div class="orb-float absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-orange-600/10 blur-[80px]"></div>
-        <div class="orb-float absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full bg-purple-600/8 blur-[70px]" style="animation-delay:-2s"></div>
-    </div>
+<body class="min-h-screen bg-grid flex flex-col items-center">
 
-    {{-- Navbar --}}
-    <header class="relative z-50 border-b border-white/5 flex-shrink-0" style="background:rgba(5,5,5,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
-        <div class="max-w-4xl mx-auto px-5 py-4 flex justify-between items-center">
-            <a href="/landing" class="flex items-center gap-2.5 min-h-[48px]">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center font-black text-sm shadow-lg shadow-orange-900/40">AE</div>
-                <span class="text-base font-black tracking-tighter uppercase italic">Auto<span class="neon-o">Engine</span></span>
-            </a>
-            <a href="/landing" class="min-h-[48px] flex items-center gap-2 text-sm text-zinc-400 hover:text-white font-bold uppercase tracking-widest transition-colors">
-                <i class="fas fa-arrow-left text-xs"></i>
-                <span class="hidden sm:inline">Kembali</span>
-            </a>
-        </div>
+    {{-- Header / Logo --}}
+    <header class="w-full max-w-5xl px-6 py-8 flex justify-between items-center z-50">
+        <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 overflow-hidden rounded-xl bg-zinc-800 shadow-lg shadow-orange-900/40">
+                <img src="{{ asset('logo.jpg') }}" alt="Logo" class="w-full h-full object-cover">
+            </div>
+            <div class="hidden sm:block">
+                <p class="text-[9px] uppercase tracking-[0.3em] text-zinc-500 font-bold leading-none mb-0.5">Auto Engine
+                </p>
+                <p class="text-xs uppercase tracking-widest text-white font-black">Success Page</p>
+            </div>
+        </a>
+        <a href="/"
+            class="text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-white transition-colors">
+            <i class="fas fa-chevron-left mr-2"></i> Kembali
+        </a>
     </header>
 
-    {{-- Main content --}}
-    <main class="flex-1 relative z-10 flex flex-col items-center justify-center py-12 px-5">
-        <div class="w-full max-w-2xl mx-auto">
+    <main class="flex-1 w-full max-w-2xl px-6 py-12 flex flex-col items-center">
 
-            {{-- SUCCESS BADGE --}}
-            <div class="text-center mb-8">
-                <div class="anim-check inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full mb-6 mx-auto"
-                    style="background:radial-gradient(circle,rgba(34,197,94,.12),rgba(34,197,94,.04));border:2px solid rgba(34,197,94,.4);box-shadow:0 0 40px rgba(34,197,94,.2)">
-                    <i class="fas fa-check text-4xl md:text-5xl text-green-400"></i>
+        {{-- Success Icon --}}
+        <div class="check-anim mb-10">
+            <div
+                class="w-24 h-24 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center relative">
+                <div class="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl animate-pulse"></div>
+                <i class="fas fa-check text-4xl text-emerald-500 relative z-10"></i>
+            </div>
+        </div>
+
+        {{-- Main Message --}}
+        <div class="text-center mb-12 animate-fade-up" style="animation-delay: 0.1s">
+            <p class="text-[10px] uppercase tracking-[0.4em] font-black text-emerald-500 mb-4">Reservasi Telah Diterima
+            </p>
+            <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white leading-none mb-6">
+                Booking <span class="text-orange-600 neon-glow">Berhasil!</span>
+            </h1>
+            <p class="text-zinc-500 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+                Terima kasih telah mempercayakan kendaraan Anda kepada kami. Tim kami akan menghubungi Anda segera
+                melalui WhatsApp.
+            </p>
+        </div>
+
+        {{-- Ticket Details --}}
+        <div class="w-full glass rounded-[2.5rem] p-8 md:p-10 mb-8 animate-fade-up relative overflow-hidden"
+            style="animation-delay: 0.2s">
+            {{-- Decorative corners --}}
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <i class="fas fa-microchip text-6xl text-orange-500"></i>
+            </div>
+
+            <div class="flex items-center justify-between mb-8 pb-6 border-b border-white/5">
+                <div>
+                    <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-black">ID Reservasi</p>
+                    <p class="text-lg font-mono font-black text-white">#{{ $booking->id }}</p>
                 </div>
-                <div class="anim-up-1">
-                    <p class="text-[10px] font-black uppercase tracking-[.35em] text-green-500 mb-3">Reservasi Diterima</p>
-                    <h1 class="anton text-5xl md:text-7xl text-white uppercase leading-none">
-                        Booking <span class="neon-o">Berhasil!</span>
-                    </h1>
-                    <p class="mt-4 text-zinc-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
-                        Tim Auto Engine akan menghubungi Anda dalam 1×24 jam untuk konfirmasi jadwal servis.
+                <div class="text-right">
+                    <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-black">Status</p>
+                    <span class="inline-flex items-center gap-2 text-[10px] font-black uppercase text-orange-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>
+                        Menunggu Konfirmasi
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <label class="text-[9px] uppercase tracking-widest text-zinc-500 font-black block mb-1">Nama
+                        Customer</label>
+                    <p class="text-sm font-bold text-white uppercase">{{ $booking->customer_name }}</p>
+                </div>
+                <div>
+                    <label class="text-[9px] uppercase tracking-widest text-zinc-500 font-black block mb-1">Tipe
+                        Kendaraan</label>
+                    <p class="text-sm font-bold text-white uppercase">{{ $booking->car_type }}
+                        ({{ $booking->car_plate ?? '-' }})</p>
+                </div>
+                <div>
+                    <label
+                        class="text-[9px] uppercase tracking-widest text-zinc-500 font-black block mb-1">Layanan</label>
+                    <p class="text-sm font-bold text-white uppercase">{{ $booking->service_type }}</p>
+                </div>
+                <div>
+                    <label class="text-[9px] uppercase tracking-widest text-zinc-500 font-black block mb-1">Rencana
+                        Kedatangan</label>
+                    <p class="text-sm font-bold text-white uppercase">
+                        {{ \Carbon\Carbon::parse($booking->booking_date)->translatedFormat('d F Y') }}
                     </p>
                 </div>
             </div>
-
-            {{-- BOOKING DETAIL --}}
-            @if(isset($booking))
-            <div class="anim-up-2 glass rounded-2xl p-5 md:p-7 mb-6">
-                <p class="text-[10px] font-black uppercase tracking-[.25em] text-zinc-600 mb-4 flex items-center gap-2">
-                    <i class="fas fa-receipt text-orange-500"></i> Detail Reservasi #{{ $booking->id }}
-                </p>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-3">
-                    @foreach([
-                        ['Nama',     $booking->customer_name ?? '—'],
-                        ['Telepon',  $booking->phone ?? '—'],
-                        ['Kendaraan',$booking->car_type ?? '—'],
-                        ['Layanan',  $booking->service_type ?? '—'],
-                        ['Jadwal',   isset($booking->booking_date) ? \Carbon\Carbon::parse($booking->booking_date)->translatedFormat('d F Y') : '—'],
-                    ] as [$label, $value])
-                    <div class="{{ $label === 'Layanan' ? 'col-span-2' : '' }}">
-                        <p class="text-[9px] uppercase tracking-widest text-zinc-600 font-black mb-0.5">{{ $label }}</p>
-                        <p class="text-sm font-bold text-zinc-100 leading-snug">{{ $value }}</p>
-                    </div>
-                    @endforeach
-                    <div>
-                        <p class="text-[9px] uppercase tracking-widest text-zinc-600 font-black mb-0.5">Status</p>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-yellow-900/30 border border-yellow-500/30 rounded-full text-yellow-400 text-[10px] font-black uppercase">
-                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span>
-                            Menunggu Konfirmasi
-                        </span>
-                    </div>
-                </div>
-            </div>
-            @endif
-
-            {{-- ACTION BUTTONS --}}
-            <div class="anim-up-2 flex flex-col sm:flex-row gap-3 mb-10">
-                <a href="https://wa.me/6281234567890?text=Halo+Auto+Engine!+Saya+baru+booking+#{{ $booking->id ?? '' }}.+Mohon+dikonfirmasi."
-                   target="_blank" rel="noopener"
-                   class="flex-1 flex items-center justify-center gap-2.5 min-h-[52px] rounded-xl font-black uppercase tracking-widest text-sm text-white transition-transform"
-                   style="background:#25D366;box-shadow:0 0 18px rgba(37,211,102,.2)">
-                    <i class="fab fa-whatsapp text-xl"></i> Konfirmasi via WA
-                </a>
-                <a href="/landing" class="btn-ghost flex-1 sm:w-auto">
-                    <i class="fas fa-house"></i> Kembali ke Beranda
-                </a>
-            </div>
-
-            {{-- DIVIDER --}}
-            <div class="relative my-8">
-                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/8"></div></div>
-                <div class="relative flex justify-center">
-                    <span class="px-5 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-700" style="background:var(--bg)">Bantu Kami Berkembang</span>
-                </div>
-            </div>
-
-            {{-- FEEDBACK FORM --}}
-            <div class="anim-up-3 glass rounded-2xl overflow-hidden">
-                <div class="px-6 py-5 border-b border-white/6" style="background:linear-gradient(90deg,rgba(255,94,0,.08),rgba(191,0,255,.05))">
-                    <h2 class="text-base font-black uppercase italic text-white">
-                        <i class="fas fa-comment-dots text-orange-400 mr-2"></i> Saran, Kritik atau Pertanyaan
-                    </h2>
-                    <p class="text-xs text-zinc-500 mt-1">Masukan Anda sangat berharga bagi kami.</p>
-                </div>
-
-                @if(session('feedback_success'))
-                <div class="mx-5 mt-5 p-4 bg-green-900/20 border border-green-500/30 rounded-xl text-green-300 text-sm flex items-center gap-3">
-                    <i class="fas fa-circle-check text-green-400 flex-shrink-0"></i>
-                    {{ session('feedback_success') }}
-                </div>
-                @endif
-
-                <form action="{{ route('feedback.store') }}" method="POST" class="p-5 md:p-7 space-y-5">
-                    @csrf
-                    @if(isset($booking))
-                    <input type="hidden" name="booking_ref" value="#{{ $booking->id }}">
-                    @endif
-
-                    {{-- Nama --}}
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-2">
-                            <i class="fas fa-user mr-1"></i> Nama
-                        </label>
-                        <input type="text" name="name" required
-                            value="{{ isset($booking) ? $booking->customer_name : old('name') }}"
-                            placeholder="Nama Anda"
-                            autocomplete="name"
-                            class="form-input">
-                    </div>
-
-                    {{-- Tipe pesan --}}
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-3">
-                            <i class="fas fa-tag mr-1"></i> Jenis Pesan
-                        </label>
-                        <div class="grid grid-cols-3 gap-2">
-                            @foreach(['saran'=>['💡','Saran','yellow'],'pertanyaan'=>['❓','Pertanyaan','blue'],'kritik'=>['🔥','Kritik','red']] as $val=>[$emoji,$lbl,$clr])
-                            <label class="cursor-pointer">
-                                <input type="radio" name="type" value="{{ $val }}" class="sr-only peer"
-                                    {{ old('type','saran') == $val ? 'checked' : '' }}>
-                                <div class="min-h-[52px] flex flex-col items-center justify-center gap-1 rounded-xl text-xs font-bold text-zinc-500 border border-zinc-800
-                                    peer-checked:border-{{ $clr }}-500 peer-checked:text-{{ $clr }}-400 peer-checked:bg-{{ $clr }}-500/8
-                                    transition-colors cursor-pointer">
-                                    <span class="text-xl">{{ $emoji }}</span>
-                                    <span class="text-[10px] font-black uppercase tracking-wide">{{ $lbl }}</span>
-                                </div>
-                            </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    {{-- Pesan --}}
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-2">
-                            <i class="fas fa-pen-to-square mr-1"></i> Pesan Anda
-                        </label>
-                        <textarea name="message" required rows="4"
-                            placeholder="Tuliskan pesan Anda di sini..."
-                            class="form-input">{{ old('message') }}</textarea>
-                    </div>
-
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i> Kirim Pesan
-                    </button>
-                </form>
-            </div>
-
         </div>
+
+        {{-- Actions --}}
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-up" style="animation-delay: 0.3s">
+            <a href="https://wa.me/6281234567890?text=Halo+Auto+Engine!+Saya+ingin+konfirmasi+booking+#{{ $booking->id }}"
+                class="bg-orange-600 hover:bg-orange-500 text-white py-4 rounded-2xl flex items-center justify-center gap-3 text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-orange-900/20 group">
+                <i class="fab fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+                Konfirmasi via WhatsApp
+            </a>
+            <a href="/"
+                class="bg-zinc-900 border border-white/10 hover:border-white/20 text-white py-4 rounded-2xl flex items-center justify-center gap-3 text-xs font-black uppercase tracking-widest transition-all">
+                <i class="fas fa-house text-sm"></i>
+                Kembali ke Beranda
+            </a>
+        </div>
+
+        {{-- Feedback Section --}}
+        <div class="w-full mt-20 p-8 glass rounded-[2.5rem] animate-fade-up" style="animation-delay: 0.4s">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+                    <i class="fas fa-comment-dots text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-sm font-black uppercase tracking-widest text-white">Saran & Kritik</h3>
+                    <p class="text-[10px] text-zinc-500 uppercase font-medium">Bantu kami meningkatkan layanan untuk
+                        Anda.</p>
+                </div>
+            </div>
+
+            <form action="{{ route('feedback.store') }}" method="POST" class="space-y-4">
+                @csrf
+                <input type="hidden" name="booking_ref" value="#{{ $booking->id }}">
+                <input type="hidden" name="name" value="{{ $booking->customer_name }}">
+                <input type="hidden" name="type" value="saran">
+
+                <textarea name="message" rows="3" required
+                    class="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-sm text-white focus:outline-none focus:border-orange-500/50 transition-all placeholder:text-zinc-700"
+                    placeholder="Tuliskan pengalaman Anda menggunakan sistem booking kami..."></textarea>
+
+                <button type="submit"
+                    class="w-full text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 hover:text-orange-500 transition-colors py-2">
+                    Kirim Masukan <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+
     </main>
 
-    <footer class="relative z-10 flex-shrink-0 py-7 border-t border-white/5 text-center">
-        <p class="text-[10px] font-bold text-zinc-700 uppercase tracking-widest">&copy; {{ date('Y') }} Auto Engine Car Service · Kelompok 5</p>
+    <footer class="py-10 text-center opacity-30">
+        <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-500">&copy; {{ date('Y') }} Auto Engine
+            Management · Mission Success</p>
     </footer>
 
 </body>
+
 </html>

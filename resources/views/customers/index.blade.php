@@ -6,7 +6,7 @@
 <div class="max-w-7xl mx-auto">
     <header class="mb-8">
         <p class="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500">Konsol CRM</p>
-        <h1 class="text-3xl font-black uppercase tracking-tight text-white">Data <span class="text-red-600">Pelanggan</span></h1>
+        <h1 class="text-3xl font-black uppercase tracking-tight text-white">Data <span class="text-orange-600">Pelanggan</span></h1>
     </header>
 
     <section class="bg-zinc-900 border border-white/5 rounded-3xl p-6">

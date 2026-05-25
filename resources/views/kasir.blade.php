@@ -7,7 +7,7 @@
     <header class="mb-8 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
         <div>
             <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 font-black">Pusat Kasir</p>
-            <h2 class="text-3xl font-black uppercase tracking-tight">Kasir <span class="text-red-600">Eksekutif</span></h2>
+            <h2 class="text-3xl font-black uppercase tracking-tight">Kasir <span class="text-orange-600">Eksekutif</span></h2>
         </div>
     </header>
 
@@ -16,8 +16,8 @@
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-5">
             <section class="xl:col-span-7 bg-zinc-900 border border-white/5 rounded-3xl p-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
-                    <input type="text" name="customer_name" required placeholder="NAMA CUSTOMER" class="md:col-span-2 w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-red-600">
-                    <input type="text" name="customer_phone" placeholder="NO WHATSAPP" class="w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-red-600">
+                    <input type="text" name="customer_name" required placeholder="NAMA CUSTOMER" class="md:col-span-2 w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-orange-600">
+                    <input type="text" name="customer_phone" placeholder="NO WHATSAPP" class="w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-orange-600">
                 </div>
 
                 <label class="mb-5 flex items-center justify-center border border-dashed border-white/10 rounded-2xl bg-black/20 h-16 cursor-pointer group">
@@ -27,7 +27,7 @@
                 </label>
 
                 <div class="mb-4">
-                    <input type="text" x-model="search" placeholder="Cari Sparepart / Jasa..." class="w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-red-600">
+                    <input type="text" x-model="search" placeholder="Cari Sparepart / Jasa..." class="w-full bg-black/40 border border-white/5 py-4 px-5 rounded-2xl font-black text-xs uppercase text-white outline-none focus:border-orange-600">
                 </div>
 
                 <div class="space-y-2 max-h-[540px] overflow-auto pr-1">
@@ -36,13 +36,13 @@
                             type="button"
                             x-show="matchesSearch('{{ strtoupper($item->name) }}')"
                             @click="addStockItem({ id: {{ $item->id }}, name: '{{ strtoupper($item->name) }}', price: {{ (int) $item->price }}, stock: {{ (int) $item->stock }}, category: '{{ $item->category }}' })"
-                            class="w-full bg-black/30 border border-white/5 rounded-2xl px-4 py-3 text-left hover:border-red-600 transition-all">
+                            class="w-full bg-black/30 border border-white/5 rounded-2xl px-4 py-3 text-left hover:border-orange-600 transition-all">
                             <div class="flex justify-between items-center gap-3">
                                 <div>
                                     <p class="text-xs font-black uppercase tracking-wide text-zinc-100">{{ $item->name }}</p>
                                     <p class="text-[10px] uppercase tracking-wider text-zinc-500">{{ strtoupper($item->category) }} | Stok {{ (int) $item->stock }}</p>
                                 </div>
-                                <p class="font-mono text-sm text-red-500">Rp{{ number_format((int) $item->price, 0, ',', '.') }}</p>
+                                <p class="font-mono text-sm text-orange-500">Rp{{ number_format((int) $item->price, 0, ',', '.') }}</p>
                             </div>
                         </button>
                     @endforeach
@@ -50,17 +50,17 @@
             </section>
 
             <section class="xl:col-span-5 bg-zinc-900 border border-white/5 rounded-3xl p-6">
-                <h3 class="text-[11px] uppercase tracking-[0.24em] font-black text-red-500 mb-4">Keranjang Belanja</h3>
+                <h3 class="text-[11px] uppercase tracking-[0.24em] font-black text-orange-500 mb-4">Keranjang Belanja</h3>
                 <div class="space-y-3 max-h-[560px] overflow-auto pr-1">
                     <template x-for="(row, index) in rows" :key="row.uuid">
                         <div class="bg-black/40 border border-white/5 rounded-2xl p-4">
                             <div class="flex justify-between items-start gap-2 mb-2">
                                 <p class="text-xs font-black uppercase tracking-wide text-zinc-100" x-text="row.name"></p>
-                                <button type="button" @click="removeRow(index)" class="text-zinc-500 hover:text-red-500"><i class="fas fa-times"></i></button>
+                                <button type="button" @click="removeRow(index)" class="text-zinc-500 hover:text-orange-500"><i class="fas fa-times"></i></button>
                             </div>
                             <div class="grid grid-cols-3 gap-2 items-center">
                                 <input type="number" min="1" x-model.number="row.qty" @input="normalizeQty(row)" class="col-span-1 bg-zinc-950 border border-white/10 rounded-xl px-3 py-2 text-white text-xs font-black text-center">
-                                <input type="text" :value="'Rp' + Number(row.price).toLocaleString('id-ID')" readonly class="col-span-2 bg-zinc-950 border border-white/10 rounded-xl px-3 py-2 text-red-500 text-xs font-mono">
+                                <input type="text" :value="'Rp' + Number(row.price).toLocaleString('id-ID')" readonly class="col-span-2 bg-zinc-950 border border-white/10 rounded-xl px-3 py-2 text-orange-500 text-xs font-mono">
                             </div>
 
                             <input type="hidden" name="item_id[]" :value="row.type === 'manual' ? 'manual' : row.id">
@@ -75,7 +75,7 @@
                     </template>
                 </div>
 
-                <button type="button" @click="addManualService()" class="mt-4 w-full bg-black/50 border border-red-600/40 text-red-500 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-600/10">
+                <button type="button" @click="addManualService()" class="mt-4 w-full bg-black/50 border border-orange-600/40 text-orange-500 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600/10">
                     Tambah Jasa Manual
                 </button>
 
@@ -84,7 +84,7 @@
                     <span class="font-mono text-2xl font-black text-white" x-text="'Rp' + total().toLocaleString('id-ID')"></span>
                 </div>
 
-                <button type="submit" class="mt-5 w-full bg-red-600 hover:bg-red-700 py-6 rounded-3xl font-black uppercase tracking-[0.12em] text-sm text-white shadow-2xl shadow-red-900/50">
+                <button type="submit" class="mt-5 w-full bg-orange-600 hover:bg-orange-700 py-6 rounded-3xl font-black uppercase tracking-[0.12em] text-sm text-white shadow-2xl shadow-orange-900/50">
                     PROSES TRANSAKSI & CETAK STRUK
                 </button>
             </section>

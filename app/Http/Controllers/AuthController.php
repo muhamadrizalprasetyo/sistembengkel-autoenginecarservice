@@ -7,23 +7,33 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function index() { return view('login'); }
-
-    public function login(Request $request) {
-        $credentials = $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+    public function showLogin()
+    {
+        if (Auth::check()) {
+            return redirect('/dashboard');
         }
-
-        return back()->with('error', 'Username atau Password Salah!');
+        return view('auth.login');
     }
 
-    public function logout(Request $request) {
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+
+        return back()
+            ->withInput($request->only('email'))
+            ->withErrors(['email' => 'Email atau password salah.']);
+    }
+
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

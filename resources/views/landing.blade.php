@@ -30,7 +30,7 @@
     <!-- Sidebar Premium Dark/Red -->
     <aside class="fixed top-0 left-0 h-full w-[250px] bg-black border-r-2 border-zinc-800 z-50 flex flex-col shadow-2xl">
         <div class="flex items-center px-6 py-8 border-b border-zinc-800 mb-6">
-            <div class="bg-red-600 p-2 rounded-full flex items-center justify-center mr-4">
+            <div class="bg-orange-600 p-2 rounded-full flex items-center justify-center mr-4">
                 <i class="fas fa-car-burst text-white text-2xl"></i>
             </div>
             <span class="font-drift text-xl tracking-widest italic">AUTO ENGINE</span>
@@ -45,8 +45,8 @@
                         class="flex items-center gap-3 px-4 py-3 rounded-md
                                text-[10px] font-black uppercase tracking-[0.14em]
                                transition
-                               {{ $currentRoute === '/' ? 'bg-red-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
-                        <i class="fas fa-th-large {{ $currentRoute === '/' ? 'text-white' : 'text-red-600' }}"></i>
+                               {{ $currentRoute === '/' ? 'bg-orange-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
+                        <i class="fas fa-th-large {{ $currentRoute === '/' ? 'text-white' : 'text-orange-600' }}"></i>
                         BERANDA
                     </a>
                 </li>
@@ -55,8 +55,8 @@
                        class="flex items-center gap-3 px-4 py-3 rounded-md
                               text-[10px] font-black uppercase tracking-[0.14em]
                               transition
-                              {{ Str::startsWith($currentRoute, 'kasir') ? 'bg-red-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
-                        <i class="fas fa-cash-register {{ Str::startsWith($currentRoute, 'kasir') ? 'text-white' : 'text-red-600' }}"></i>
+                              {{ Str::startsWith($currentRoute, 'kasir') ? 'bg-orange-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
+                        <i class="fas fa-cash-register {{ Str::startsWith($currentRoute, 'kasir') ? 'text-white' : 'text-orange-600' }}"></i>
                         KASIR
                     </a>
                 </li>
@@ -65,8 +65,8 @@
                        class="flex items-center gap-3 px-4 py-3 rounded-md
                               text-[10px] font-black uppercase tracking-[0.14em]
                               transition
-                              {{ Str::startsWith($currentRoute, 'items') ? 'bg-red-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
-                        <i class="fas fa-boxes {{ Str::startsWith($currentRoute, 'items') ? 'text-white' : 'text-red-600' }}"></i>
+                              {{ Str::startsWith($currentRoute, 'items') ? 'bg-orange-600 text-white' : 'hover:bg-zinc-900 text-zinc-300' }}">
+                        <i class="fas fa-boxes {{ Str::startsWith($currentRoute, 'items') ? 'text-white' : 'text-orange-600' }}"></i>
                         STOK
                     </a>
                 </li>
@@ -79,7 +79,7 @@
                                transition
                                hover:bg-zinc-900 text-zinc-300 justify-between">
                         <span class="flex items-center gap-3">
-                            <i class="fas fa-ellipsis-h text-red-600"></i>
+                            <i class="fas fa-ellipsis-h text-orange-600"></i>
                             LAINNYA
                         </span>
                         <i class="fas fa-chevron-down text-zinc-500 text-[10px] transition-transform" :class="{ 'rotate-180': open }"></i>
@@ -87,20 +87,20 @@
                     <ul x-show="open" @click.outside="open=false" x-transition
                         class="absolute left-0 mt-1 w-full bg-zinc-950 border border-zinc-800 rounded-md shadow-xl z-20">
                         <li>
-                            <a href="/reports" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-red-500 text-zinc-300">
-                                <i class="fas fa-chart-line text-red-600"></i>
+                            <a href="/reports" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-orange-500 text-zinc-300">
+                                <i class="fas fa-chart-line text-orange-600"></i>
                                 Laporan Keuangan
                             </a>
                         </li>
                         <li>
-                            <a href="/customers" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-red-500 text-zinc-300">
-                                <i class="fas fa-users text-red-600"></i>
+                            <a href="/customers" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-orange-500 text-zinc-300">
+                                <i class="fas fa-users text-orange-600"></i>
                                 Data Pelanggan
                             </a>
                         </li>
                         <li>
-                            <a href="/riwayat-struk" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-red-500 text-zinc-300">
-                                <i class="fas fa-receipt text-red-600"></i>
+                            <a href="/riwayat-struk" class="flex items-center gap-3 px-4 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.12em] transition hover:bg-zinc-900 hover:text-orange-500 text-zinc-300">
+                                <i class="fas fa-receipt text-orange-600"></i>
                                 Riwayat &amp; Struk
                             </a>
                         </li>
